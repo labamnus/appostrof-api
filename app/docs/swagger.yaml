@@ -1,14 +1,64 @@
 info:
   contact: {}
 paths:
-  /api/heartbeat:
+  /quote:
     get:
       responses:
-        "204":
-          description: ""
+        "200":
+          description: OK
         "400":
-          description: ""
-      summary: Heartbeat metric
+          description: Bad Request
+      summary: Returns random quote (dev version)
       tags:
-      - Metrics
+      - Quote
+  /story:
+    get:
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Returns story for today
+      tags:
+      - Story
+  /story/rate:
+    post:
+      parameters:
+      - description: Story rate
+        in: body
+        name: rate
+        required: true
+        schema:
+          type: number
+      - description: Story ID
+        in: body
+        name: ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Rate story
+      tags:
+      - Story
+  /story/read:
+    post:
+      parameters:
+      - description: Story ID
+        in: body
+        name: ID
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+      summary: Read story
+      tags:
+      - Story
 swagger: "2.0"

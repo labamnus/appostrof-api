@@ -3,18 +3,19 @@ package app
 import (
 	_ "appostrof_api/docs"
 	"appostrof_api/internal/config"
+	"appostrof_api/internal/controller/http/v1/quote"
+	"appostrof_api/internal/controller/http/v1/story"
 	"appostrof_api/pkg/logging"
 	"appostrof_api/pkg/metric"
 	"context"
 	"errors"
 	"fmt"
-	"golang.org/x/sync/errgroup"
-	"net"
-	"net/http"
-
 	"github.com/julienschmidt/httprouter"
 	"github.com/rs/cors"
 	httpSwagger "github.com/swaggo/http-swagger"
+	"golang.org/x/sync/errgroup"
+	"net"
+	"net/http"
 )
 
 type App struct {
@@ -35,6 +36,14 @@ func NewApp(ctx context.Context, config *config.Config) (App, error) {
 	logging.Info(ctx, "heartbeat metric initializing")
 	metricHandler := metric.Handler{}
 	metricHandler.Register(router)
+
+	logging.Info(ctx, "story handlers initializing")
+	storyHandler := story.Handler{}
+	storyHandler.Register(router)
+
+	logging.Info(ctx, "quote handlers initializing")
+	quoteHandler := quote.Handler{}
+	quoteHandler.Register(router)
 
 	return App{
 		cfg:    config,

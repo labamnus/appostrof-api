@@ -16,18 +16,97 @@ const docTemplate = `{
     "host": "{{.Host}}",
     "basePath": "{{.BasePath}}",
     "paths": {
-        "/api/heartbeat": {
+        "/quote": {
             "get": {
                 "tags": [
-                    "Metrics"
+                    "Quote"
                 ],
-                "summary": "Heartbeat metric",
+                "summary": "Returns random quote (dev version)",
                 "responses": {
-                    "204": {
-                        "description": ""
+                    "200": {
+                        "description": "OK"
                     },
                     "400": {
-                        "description": ""
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/story": {
+            "get": {
+                "tags": [
+                    "Story"
+                ],
+                "summary": "Returns story for today",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/story/rate": {
+            "post": {
+                "tags": [
+                    "Story"
+                ],
+                "summary": "Rate story",
+                "parameters": [
+                    {
+                        "description": "Story rate",
+                        "name": "rate",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    },
+                    {
+                        "description": "Story ID",
+                        "name": "ID",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    }
+                }
+            }
+        },
+        "/story/read": {
+            "post": {
+                "tags": [
+                    "Story"
+                ],
+                "summary": "Read story",
+                "parameters": [
+                    {
+                        "description": "Story ID",
+                        "name": "ID",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Bad Request"
                     }
                 }
             }
