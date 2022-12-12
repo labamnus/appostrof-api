@@ -1,0 +1,9 @@
+BEGIN;
+
+DROP TABLE IF EXISTS public.user CASCADE;
+DROP TABLE IF EXISTS public.story CASCADE;
+DROP TABLE IF EXISTS public.stories_authors CASCADE;
+DROP TABLE IF EXISTS public.author CASCADE;
+DROP TABLE IF EXISTS public.quote CASCADE;
+
+END;
