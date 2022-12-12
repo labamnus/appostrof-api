@@ -1,6 +1,7 @@
 package quote
 
 import (
+	"appostrof_api/pkg/logging"
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
@@ -8,6 +9,7 @@ import (
 )
 
 type Handler struct {
+	logger *logging.Logger
 }
 
 func (h *Handler) Register(router *httprouter.Router) {

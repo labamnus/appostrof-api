@@ -2,6 +2,7 @@ package story
 
 import (
 	"appostrof_api/internal/controller/http/dto"
+	"appostrof_api/pkg/logging"
 	"encoding/json"
 	"fmt"
 	"github.com/julienschmidt/httprouter"
@@ -9,6 +10,7 @@ import (
 )
 
 type Handler struct {
+	logger *logging.Logger
 }
 
 func (h *Handler) Register(router *httprouter.Router) {
