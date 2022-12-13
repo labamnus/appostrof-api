@@ -62,4 +62,18 @@ CREATE TABLE public.stories_authors (
     CONSTRAINT author_fk FOREIGN KEY (author_id) REFERENCES public.author(id)
 );
 
+CREATE TABLE public.tag
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL
+);
+
+CREATE TABLE public.stories_tags
+(
+    story_id UUID NOT NULL,
+    CONSTRAINT story_fk FOREIGN KEY (story_id) REFERENCES public.story(id),
+    tag_id UUID NOT NULL,
+    CONSTRAINT tag_fk FOREIGN KEY (tag_id) REFERENCES public.tag(id)
+);
+
 COMMIT;
