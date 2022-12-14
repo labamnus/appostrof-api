@@ -18,11 +18,11 @@ CREATE EXTENSION IF NOT EXISTS pgcrypto;
 CREATE TABLE public.user
 (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) UNIQUE NOT NULL,
+    name VARCHAR(255),
+    email VARCHAR(255) UNIQUE ,
     CONSTRAINT proper_email CHECK (email ~* '^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+[.][A-Za-z]+$'),
-    phone VARCHAR(255) UNIQUE,
-    password TEXT NOT NULL,
+    guest_id TEXT UNIQUE,
+    password TEXT,
     image_id TEXT,
     is_admin BOOLEAN DEFAULT false
 );
