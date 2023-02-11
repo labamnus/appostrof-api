@@ -67,7 +67,7 @@ func GetConfig() *Config {
 		instance = &Config{}
 
 		if err := cleanenv.ReadConfig(configPath, instance); err != nil {
-			helpText := "Appostrof api"
+			helpText := "Appostrof api in golang version by labamnus"
 			help, _ := cleanenv.GetDescription(instance, &helpText)
 			log.Print(help)
 			log.Fatal(err)
